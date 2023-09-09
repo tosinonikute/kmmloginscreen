@@ -52,3 +52,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 }
+
+dependencies {
+    implementation(project(mapOf("path" to ":shared:textvalidator")))
+}

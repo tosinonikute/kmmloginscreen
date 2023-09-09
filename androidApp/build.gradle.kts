@@ -53,6 +53,7 @@ dependencies {
     // View model
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.5.1")
+    implementation("androidx.activity:activity-ktx:1.6.1")
 
     // Hilt
     implementation("com.google.dagger:hilt-android:2.48")
@@ -60,4 +61,7 @@ dependencies {
 
     // logger
     implementation("com.jakewharton.timber:timber:5.0.1")
+
+    // text validator
+    implementation(project(mapOf("path" to ":shared:textvalidator")))
 }

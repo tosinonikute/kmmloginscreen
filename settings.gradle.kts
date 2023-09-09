@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 rootProject.name = "kmmloginscreen"
 include(":androidApp")
 include(":shared")
+include(":shared:textvalidator")
