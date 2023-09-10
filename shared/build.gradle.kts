@@ -6,7 +6,6 @@ plugins {
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
 kotlin {
     targetHierarchy.default()
-    val coroutinesVersion = "1.6.4"
 
     android {
         compilations.all {
@@ -15,8 +14,10 @@ kotlin {
             }
         }
     }
-    
-    listOf(
+    jvm()
+
+    // To enable iOS target when implementing UI for iOS
+    /* listOf(
         iosX64(),
         iosArm64(),
         iosSimulatorArm64()
@@ -24,18 +25,30 @@ kotlin {
         it.binaries.framework {
             baseName = "shared"
         }
-    }
+    } */
 
+    val coroutinesVersion = "1.6.4"
+    val junitVersion = "4.13.2"
+    val mockitoVersion = "4.0.0"
     sourceSets {
         val commonMain by getting {
             dependencies {
-                //put your multiplatform dependencies here
+                // put your multiplatform dependencies here
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
+                implementation(project(mapOf("path" to ":shared:textvalidator")))
             }
         }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
+            }
+        }
+        val jvmMain by getting
+        val jvmTest by getting {
+            dependencies {
+                implementation(kotlin("test"))
+                implementation("junit:junit:$junitVersion")
+                implementation("org.mockito:mockito-inline:$mockitoVersion")
             }
         }
     }
@@ -51,8 +64,4 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-}
-
-dependencies {
-    implementation(project(mapOf("path" to ":shared:textvalidator")))
 }
