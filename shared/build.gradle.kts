@@ -3,29 +3,10 @@ plugins {
     id("com.android.library")
 }
 
-@OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
 kotlin {
-    targetHierarchy.default()
 
-    android {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "17"
-            }
-        }
-    }
+    android()
     jvm()
-
-    // To enable iOS target when implementing UI for iOS
-    /* listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64()
-    ).forEach {
-        it.binaries.framework {
-            baseName = "shared"
-        }
-    } */
 
     val coroutinesVersion = "1.6.4"
     val junitVersion = "4.13.2"
@@ -33,16 +14,13 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                // put your multiplatform dependencies here
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
                 implementation(project(mapOf("path" to ":shared:textvalidator")))
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
             }
         }
-        val commonTest by getting {
-            dependencies {
-                implementation(kotlin("test"))
-            }
-        }
+        val commonTest by getting
+        val androidMain by getting
+        val androidTest by getting
         val jvmMain by getting
         val jvmTest by getting {
             dependencies {
@@ -58,10 +36,10 @@ android {
     namespace = "com.kmmloginscreen"
     compileSdk = 33
     defaultConfig {
-        minSdk = 24
+        minSdk = 21
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
+}
+
+dependencies {
+    implementation(project(mapOf("path" to ":shared:textvalidator")))
 }
