@@ -39,7 +39,7 @@ object DomainModule {
     fun providesValidateEmailUsecase(
         coroutineContextProvider: CoroutineContextProvider,
         validationStatusRepository: ValidationStatusRepository
-    ): ValidateEmailUsecase = ValidateEmailUsecaseImpl(
+    ):ValidateEmailUsecase = ValidateEmailUsecaseImpl(
         coroutineContextProvider,
         validationStatusRepository
     )
@@ -48,7 +48,7 @@ object DomainModule {
     fun providesValidatePasswordUsecase(
         coroutineContextProvider: CoroutineContextProvider,
         validationStatusRepository: ValidationStatusRepository
-    ): ValidatePasswordUsecase = ValidatePasswordUsecaseImpl(
+    ):ValidatePasswordUsecase = ValidatePasswordUsecaseImpl(
         coroutineContextProvider,
         validationStatusRepository
     )

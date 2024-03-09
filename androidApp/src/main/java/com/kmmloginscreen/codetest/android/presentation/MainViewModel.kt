@@ -20,15 +20,6 @@ class MainViewModel @Inject constructor(
 ) {
     override fun initialState() = MainViewState()
 
-
-    fun hello() {
-        updateState(
-            currentViewState().copy(
-                isEmailValid = false
-            )
-        )
-    }
-
     fun onValidateEmail(email: String) {
         useCaseExecutor.execute(
             useCase = validateEmailUsecase,

@@ -7,8 +7,8 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import com.kmmloginscreen.data.repository.ValidationStatusDataRepository
 import com.kmmloginscreen.domain.repository.ValidationStatusRepository
-import io.kmmtextvalidator.code.textvalidator.TextValidator
-import io.kmmtextvalidator.code.textvalidator.TextValidatorImpl
+import com.kmmloginscreen.textvalidator.TextValidator
+import com.kmmloginscreen.textvalidator.TextValidatorImpl
 
 @Module
 @InstallIn(SingletonComponent::class)
